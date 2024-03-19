@@ -45,21 +45,17 @@ public class DatabaseConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan(environment.getRequiredProperty("db.entity.package")); //указывает пакеты где Spring должен искать сущности
-        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter()); //означает, что Hibernate будет использоваться в качестве JPA.
-        em.setJpaProperties(getHibernateProperties()); //настраивает EntityManagerFactory
-        return em;
-    }
-
-    private Properties getHibernateProperties() {
+        LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         Properties properties = new Properties();
+        entityManager.setDataSource(dataSource());
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
-        return properties;
+        entityManager.setPackagesToScan(environment.getRequiredProperty("db.entity.package")); //указывает пакеты где Spring должен искать сущности
+        entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter()); //означает, что Hibernate будет использоваться в качестве JPA.
+        entityManager.setJpaProperties(properties); //настраивает EntityManagerFactory
+        return entityManager;
     }
 
     @Bean
