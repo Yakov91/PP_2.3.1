@@ -32,6 +32,7 @@ public class UserController {
         model.addAttribute("user", new User());
         return "create_user";
     }
+
     @PostMapping("/create_user")
     public String addUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
@@ -51,8 +52,9 @@ public class UserController {
         } catch (Exception e) {
             System.out.println("There is no such user!");
         }
-        return "redirect:/";
+        return "all_users"; //redirect:/
     }
+
 
     @GetMapping("/delete_user")
     public String getWhichUserDelete(Model model) {

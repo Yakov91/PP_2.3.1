@@ -70,16 +70,4 @@ public class DatabaseConfig {
         return new PersistenceExceptionTranslationPostProcessor(); //переводит исключения JPA в исключения Spring
     }
 }
-//    @Bean
-//    public Properties getHibernateProperties() {
-//        Properties properties = new Properties();
-//        InputStream is = getClass().getClassLoader()
-//                .getResourceAsStream("db.properties");
-//        try {
-//            properties.load(is);
-//        } catch (Exception e) {
-//            throw new RuntimeException("Can't find hibernate properties", e);
-//        }
-//        return properties;
-//    }
 

@@ -5,30 +5,24 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-import javax.sql.DataSource;
-import java.util.Objects;
+
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("web")
-//@PropertySource("classpath:db.properties")
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
-//    private final Environment environment;
 
     @Autowired
-    public WebConfig(ApplicationContext applicationContext, Environment environment) {
+    public WebConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 

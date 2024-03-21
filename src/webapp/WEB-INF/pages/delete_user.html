@@ -8,7 +8,7 @@
 
     <form th:method="POST" th:action="@{/delete_user}" th:object="${userDelete}">
         <label for="id">Enter id: </label>
-        <input type="number" th:filed="*{id}" id="id">
+        <input type="number" th:field="*{id}" id="id">
         <br/>
 
         <input type="submit" value="Delete user">
